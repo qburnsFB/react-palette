@@ -4,7 +4,7 @@ export declare type PaletteState = {
     error?: Error;
     data: PaletteColors;
 };
-export declare function usePalette(src: string): {
+export declare function usePalette(src: string, existingData?: PaletteColors): {
     data: any;
     loading: boolean;
     error?: Error;

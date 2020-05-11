@@ -24,19 +24,24 @@ function reducer(state: PaletteState, action) {
   }
 }
 
-export function usePalette(src: string) {
+export function usePalette(src: string, existingData: PaletteColors = {}) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    dispatch({ type: 'getPalette' });
+    dispatch({type: 'getPalette'});
 
-    getPalette(src)
-      .then(palette => {
-        dispatch({ type: 'resolvePalette', payload: palette });
-      })
-      .catch(ex => {
-        dispatch({ type: 'rejectPalette', payload: ex });
-      });
+
+    if (existingData.vibrant) {
+      dispatch({type: 'resolvePalette', payload: existingData});
+    } else {
+      getPalette(src)
+          .then(palette => {
+            dispatch({type: 'resolvePalette', payload: palette});
+          })
+          .catch(ex => {
+            dispatch({type: 'rejectPalette', payload: ex});
+          });
+    }
   }, [src]);
 
   return state;
