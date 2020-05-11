@@ -1,6 +1,7 @@
 import Vibrant from "node-vibrant";
 import camelCase from "lodash.camelcase";
 import invoke from 'lodash.invoke';
+import loadImage from './loadImage';
 
 export type PaletteColors = {
   vibrant?: string;
@@ -13,7 +14,8 @@ export type PaletteColors = {
 };
 
 export async function getPalette(src: string) {
-  const palette = await Vibrant.from(src).getPalette();
+  const img = await loadImage(src);
+  const palette = await Vibrant.from(img).getPalette();
   const setPaletteColor = (acc, paletteName) => ({
     ...acc,
     [camelCase(paletteName)]: invoke(palette, [paletteName, 'getHex'])

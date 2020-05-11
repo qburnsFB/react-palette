@@ -1,6 +1,6 @@
 {
-  "name": "react-palette",
-  "version": "1.0.1",
+  "name": "crossorigin-react-palette",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/react-palette.js",
   "umd:main": "dist/react-palette.umd.js",
@@ -24,7 +24,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git://github.com/leonardokl/react-palette.git"
+    "url": "git://github.com/qburnsFB/react-palette.git"
   },
   "files": [
     "dist",
